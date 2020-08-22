@@ -231,6 +231,10 @@ body .card--body ul li a {
   transition: all .3s ease;
 }
 body .card--body ul li a:hover.fa-linkedin {
+  color: #0366d6;
+  border-color: #0366d6;
+}
+body .card--body ul li a:hover.fa-github {
   color: #0077B5;
   border-color: #0077B5;
 }
