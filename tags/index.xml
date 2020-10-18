@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Rune Laenen</title>
+    <link>http://laenen.me/tags/</link>
+    <description>Recent content in Tags on Rune Laenen</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 18 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://laenen.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>digital publishing</title>
+      <link>http://laenen.me/tags/digital-publishing/</link>
+      <pubDate>Sun, 18 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://laenen.me/tags/digital-publishing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>open source</title>
+      <link>http://laenen.me/tags/open-source/</link>
+      <pubDate>Sun, 18 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://laenen.me/tags/open-source/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>shopware</title>
+      <link>http://laenen.me/tags/shopware/</link>
+      <pubDate>Sun, 18 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://laenen.me/tags/shopware/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
