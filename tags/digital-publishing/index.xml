@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>digital publishing on Rune Laenen</title>
-    <link>http://laenen.me/tags/digital-publishing/</link>
+    <link>https://laenen.me/tags/digital-publishing/</link>
     <description>Recent content in digital publishing on Rune Laenen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 18 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://laenen.me/tags/digital-publishing/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 18 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://laenen.me/tags/digital-publishing/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Digital Publishing for Shopware 6</title>
-      <link>http://laenen.me/posts/digital-publishing-for-shopware-6/</link>
+      <link>https://laenen.me/posts/digital-publishing-for-shopware-6/</link>
       <pubDate>Sun, 18 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://laenen.me/posts/digital-publishing-for-shopware-6/</guid>
+      <guid>https://laenen.me/posts/digital-publishing-for-shopware-6/</guid>
       <description>Hi there 👋
 The first blog post here is to announce the launch of the first stable (read &amp;lsquo;stable enough&amp;rsquo;) version of my Advanced Banners (a.k.a Digital Publishing) plugin for Shopware 6. It&amp;rsquo;s available for free on Github &amp;amp; packagist.
 Install and try it out yourself:
