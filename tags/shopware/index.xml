@@ -6,17 +6,7 @@
     <description>Recent content in shopware on Rune Laenen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 20 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://laenen.me/tags/shopware/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Use Github actions to create Shopware 6 Plugin zips</title>
-      <link>https://laenen.me/posts/github-actions-shopware-plugin-zip/</link>
-      <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://laenen.me/posts/github-actions-shopware-plugin-zip/</guid>
-      <description>Shopware offers the possibility to upload .zip files in the backend to install plugins. As an open source developer, the main way to distribute my plugins was to offer a composer command. However, not all Shopware installations (or webmaster) have the possibility to easily add extra dependencies through composer.
-To not have the hassle of creating the zip files manually, it&amp;rsquo;s possible to use Github Actions to automatically create it whenever you tag a new version.</description>
-    </item>
-    
+    <lastBuildDate>Sun, 18 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://laenen.me/tags/shopware/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Digital Publishing for Shopware 6</title>
       <link>https://laenen.me/posts/digital-publishing-for-shopware-6/</link>
