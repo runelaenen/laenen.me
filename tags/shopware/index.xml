@@ -6,7 +6,52 @@
     <description>Recent content in shopware on Rune Laenen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 23 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://laenen.me/tags/shopware/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 17 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://laenen.me/tags/shopware/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>6 reasons to choose for Shopware 6</title>
+      <link>https://laenen.me/posts/6-reasons-to-choose-for-shopware-6/</link>
+      <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://laenen.me/posts/6-reasons-to-choose-for-shopware-6/</guid>
+      <description>I wrote a guest post about Shopware 6 on the blog of Intracto. This blog post is in Dutch.</description>
+    </item>
+    
+    <item>
+      <title>The power of the Rule Builder in Shopware 6</title>
+      <link>https://laenen.me/posts/nl-de-kracht-van-de-shopware-6-rule-builder/</link>
+      <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://laenen.me/posts/nl-de-kracht-van-de-shopware-6-rule-builder/</guid>
+      <description>I wrote a guest post on the blog of Intracto about the Rule Builder in Shopware 6. This blog post is in Dutch.</description>
+    </item>
+    
+    <item>
+      <title>Improved Customer Experience with Shopping Experiences in Shopware</title>
+      <link>https://laenen.me/posts/better-customer-experience-with-shopping-experiences-in-shopware/</link>
+      <pubDate>Tue, 01 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://laenen.me/posts/better-customer-experience-with-shopping-experiences-in-shopware/</guid>
+      <description>I wrote a guest post about Shopware 6 Shopping Experiences on the blog of Intracto. This blog post is in Dutch.</description>
+    </item>
+    
+    <item>
+      <title>Selling on social media with Shopware 6</title>
+      <link>https://laenen.me/posts/selling-easier-on-social-media-with-shopware-6/</link>
+      <pubDate>Fri, 13 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://laenen.me/posts/selling-easier-on-social-media-with-shopware-6/</guid>
+      <description>I wrote a guest post on the blog of Intracto about integrating Shopware 6 with Facebook and Instagram Shopping. This blog post is in Dutch.</description>
+    </item>
+    
+    <item>
+      <title>Technical pros of Shopware 6 as e-commerce platform</title>
+      <link>https://laenen.me/posts/technical-pros-of-shopware-as-a-ecommerce-platform/</link>
+      <pubDate>Sun, 08 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://laenen.me/posts/technical-pros-of-shopware-as-a-ecommerce-platform/</guid>
+      <description>I wrote a guest post on the blog of Intracto about Shopware. This blog post is in Dutch.</description>
+    </item>
+    
     <item>
       <title>Use Github Actions to compile &amp; release SW6 plugins</title>
       <link>https://laenen.me/posts/github-actions-shopware-plugin-zip/</link>
