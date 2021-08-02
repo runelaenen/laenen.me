@@ -1,63 +1,71 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
+    <loc>https://laenen.me/tags/administration/</loc>
+    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://laenen.me/posts/custom-icons-in-sw6-admin/</loc>
+    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://laenen.me/tags/development/</loc>
+    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://laenen.me/posts/</loc>
+    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://laenen.me/</loc>
+    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://laenen.me/tags/shopware/</loc>
+    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://laenen.me/tags/</loc>
+    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://laenen.me/posts/6-reasons-to-choose-for-shopware-6/</loc>
+    <lastmod>2020-12-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://laenen.me/tags/guest-blog/</loc>
+    <lastmod>2020-12-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://laenen.me/tags/intracto/</loc>
+    <lastmod>2020-12-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://laenen.me/posts/nl-de-kracht-van-de-shopware-6-rule-builder/</loc>
+    <lastmod>2020-12-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://laenen.me/posts/better-customer-experience-with-shopping-experiences-in-shopware/</loc>
+    <lastmod>2020-12-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://laenen.me/posts/selling-easier-on-social-media-with-shopware-6/</loc>
+    <lastmod>2020-11-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://laenen.me/posts/technical-pros-of-shopware-as-a-ecommerce-platform/</loc>
+    <lastmod>2020-11-08T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://laenen.me/tags/friends-of-shopware/</loc>
     <lastmod>2020-10-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://laenen.me/tags/github-actions/</loc>
     <lastmod>2020-10-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://laenen.me/tags/open-source/</loc>
     <lastmod>2020-10-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://laenen.me/posts/</loc>
-    <lastmod>2020-10-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://laenen.me/</loc>
-    <lastmod>2020-10-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://laenen.me/tags/shopware/</loc>
-    <lastmod>2020-10-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://laenen.me/tags/</loc>
-    <lastmod>2020-10-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://laenen.me/posts/github-actions-shopware-plugin-zip/</loc>
     <lastmod>2020-10-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://laenen.me/tags/digital-publishing/</loc>
     <lastmod>2020-10-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://laenen.me/posts/digital-publishing-for-shopware-6/</loc>
     <lastmod>2020-10-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://laenen.me/categories/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://laenen.me/series/</loc>
+  </url><url>
+    <loc>https://laenen.me/plugins/</loc>
   </url>
-  
 </urlset>

@@ -11,11 +11,11 @@
 <meta name="description" content="Rune Laenen - Shopware 6 developer">
 <meta name="author" content="Rune Laenen">
 <link rel="canonical" href="https://laenen.me/" />
-<link href="https://laenen.me/assets/css/stylesheet.min.c91c3ed78ea855658ac993096d76c123286df5a7d191c2ed38d133cf22dc97de.css" integrity="sha256-yRw&#43;146oVWWKyZMJbXbBIyht9afRkcLtONEzzyLcl94=" rel="preload stylesheet"
+<link href="https://laenen.me/assets/css/stylesheet.min.7c7ac618fc31027755e6b36e1b38c14103a3712f8c14d8db486efcc521ef1474.css" integrity="sha256-fHrGGPwxAndV5rNuGzjBQQOjcS&#43;MFNjbSG78xSHvFHQ=" rel="preload stylesheet"
     as="style">
 <link rel="apple-touch-icon" href="https://laenen.me/apple-touch-icon.png">
 <link rel="icon" href="https://laenen.me/favicon.ico">
-<meta name="generator" content="Hugo 0.76.5" />
+<meta name="generator" content="Hugo 0.83.1" />
 <link rel="alternate" type="application/rss&#43;xml" href="https://laenen.me/index.xml">
 
 <script type="application/javascript">
@@ -32,7 +32,7 @@ if (!doNotTrack) {
 <meta property="og:description" content="Rune Laenen - Shopware 6 developer" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://laenen.me/" />
-<meta property="og:updated_time" content="2020-10-23T00:00:00+00:00" />
+<meta property="og:updated_time" content="2021-06-24T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Rune Laenen"/>
 <meta name="twitter:description" content="Rune Laenen - Shopware 6 developer"/>
@@ -111,9 +111,9 @@ if (!doNotTrack) {
                 </a>
             </li>
             <li>
-                <a href="https://laenen.me/posts/">
+                <a href="https://laenen.me/plugins/">
                     <span>
-                        Archive
+                        Plugins
                     </span>
                 </a>
             </li>
@@ -135,15 +135,16 @@ if (!doNotTrack) {
 <article class="first-entry home-info">
     <div style="display: flex; flex-direction: row; align-items: center;">
         <div style="margin-right: 32px;">
-            <img src="/3930922.png" style="width: 170px; height: 170px;" />
+            <img src="/hi-its-me.jpeg" style="width: 170px; height: 170px; border-radius: 8px;" />
         </div>
         <div style="flex: 1;">
             <header class="entry-header">
                 <h2>Hi there 👋</h2>
             </header>
             <section class="entry-content" style="margin-bottom: 0;">
-                <p>Welcome to my blog!</p>
-                <p>I'm a certified Shopware 6 from Belgium working at <a href="https:/intracto.com/">Intracto</a>.</p>
+                <p>Welcome to my website & blog!</p>
+                <p>I'm a certified Shopware 6 from Belgium working full-time at <a href="https://intracto.com/">Intracto</a> and part-time as a freelancer.</p>
+                <p>If you are looking for an e-commerce consultant, plugin builder or general know-it-all: Look no further, and contact me 🤩</p>
             </section>
             <footer class="entry-footer"><div class="social-icons"><a href="https://twitter.com/runelaenen" target="_blank" rel="noopener noreferrer"
         title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -185,47 +186,127 @@ if (!doNotTrack) {
     </div>
 </article>
 
+
+<h2 style="margin-bottom: 16px;">My services</h2>
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-gap: 16px;">
+    <div style="background: white; border-radius: 8px; padding: 16px;">
+        <b>Shopware 6 development</b><br />
+        Want your own Shopware plugin?
+        Or do you have a problem that you can't fix? Let me take a look at it.
+    </div>
+    <div style="background: white; border-radius: 8px; padding: 16px;">
+        <b>Graphical design</b><br />
+        In need of stationary? Flyers? Posters? Web-banners? Let's talk and see what I can do.
+    </div>
+</div>
+
+<div style="margin-bottom: 32px; margin-top: 16px; background: white; border-radius: 8px; padding: 16px;">
+    <b>Interested?</b> Contact me: <a href="mailto:rune@laenen.me">rune@laenen.me</a>
+</div>
+
+<div style="margin-bottom: 32px; margin-top: 16px; color: gray;">
+    P.S. Goed opgemerkt!<br />Mijn website is inderdaad in het Engels, maar als geboren en getogen Kempenaar is Nederlands uiteraard ook welkom! <i>Of int plat dialect agge da plezaanter vent.</i>
+</div>
+
+<h2 style="margin-bottom: 16px;">My latest blog posts</h2>
 <article class="post-entry">
   <figure class="entry-cover">
-    <img src="https://laenen.me/github-actions-banner.jpg" alt="GitHub Actions">
+    <img src="https://laenen.me/blog-shopware-6-custom-icons-header.jpg" alt="Custom icons in Shopware 6 Administration">
   </figure>
   <header class="entry-header">
     <h2>
-      Use Github Actions to compile &amp; release SW6 plugins
+      Custom icons in Shopware 6 Administration
     </h2>
   </header>
   <section class="entry-content">
-    <p>Shopware offers the possibility to upload .zip files in the backend to install plugins. As an open source developer, the main way to distribute my plugins was to offer a composer command. However, not all Shopware installations (or webmasters) have the possibility to easily add extra dependencies through composer.
-To not have the hassle of creating the zip files manually, it’s possible to use Github Actions to automatically create it whenever you tag a new version....</p>
+    <p>Shopware is very extendable, but not everything is as easy to do or is as well documented as we would sometimes like. To extend this online ‘community-documentation’, I like to write down some tips, tricks and code snippets and share them with the world. Today, I tried to add a custom icon to the Shopware 6 Administration, and found out that it was not very easy to do. Until you know how, of course!...</p>
   </section>
   <footer class="entry-footer">
-    <time>October 23, 2020</time>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Rune Laenen
+    <time>June 24, 2021</time>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Rune Laenen
   </footer>
-  <a class="entry-link" aria-label="post link to Use Github Actions to compile &amp; release SW6 plugins" href="https://laenen.me/posts/github-actions-shopware-plugin-zip/"></a>
+    <a class="entry-link" aria-label="post link to Custom icons in Shopware 6 Administration" href="https://laenen.me/posts/custom-icons-in-sw6-admin/"></a>
+  
 </article>
 <article class="post-entry">
   <figure class="entry-cover">
-    <img src="https://laenen.me/advanced-banners-banner.png" alt="Advanced Banners (Digital Publishing) for Shopware 6">
+    <img src="https://laenen.me/blog-shopware-6-header.jpg" alt="Shopware HQ">
   </figure>
   <header class="entry-header">
     <h2>
-      Digital Publishing for Shopware 6
+      6 reasons to choose for Shopware 6
     </h2>
   </header>
   <section class="entry-content">
-    <p>Hi there 👋
-The first blog post here is to announce the launch of the first stable (read ‘stable enough’) version of my Advanced Banners (a.k.a Digital Publishing) plugin for Shopware 6. It’s available for free on Github &amp; packagist.
-Install and try it out yourself:
-composer require runelaenen/shopware6-advanced-banners Using Advanced banners, you can create layered, responsive banners without the need of technical knowledge or software like Photoshop. The plugin allows you to create content made out of layers of images, text, buttons, … from within the Shopware 6 backend....</p>
+    <p>I wrote a guest post about Shopware 6 on the blog of Intracto. This blog post is in Dutch....</p>
   </section>
   <footer class="entry-footer">
-    <time>October 18, 2020</time>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Rune Laenen
+    <time>December 17, 2020</time>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Rune Laenen
   </footer>
-  <a class="entry-link" aria-label="post link to Digital Publishing for Shopware 6" href="https://laenen.me/posts/digital-publishing-for-shopware-6/"></a>
+    <a class="entry-link" aria-label="post link to 6 reasons to choose for Shopware 6" target="_blank" rel="noopener" href="https://www.intracto.com/nl-be/blog/6-redenen-om-voor-shopware-6-te-kiezen"></a>
+  
 </article>
+<article class="post-entry">
+  <figure class="entry-cover">
+    <img src="https://laenen.me/blog-shopware-6-rule-builder-header.jpg" alt="Shopware 6 Rule Builder">
+  </figure>
+  <header class="entry-header">
+    <h2>
+      The power of the Rule Builder in Shopware 6
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>I wrote a guest post on the blog of Intracto about the Rule Builder in Shopware 6. This blog post is in Dutch....</p>
+  </section>
+  <footer class="entry-footer">
+    <time>December 17, 2020</time>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Rune Laenen
+  </footer>
+    <a class="entry-link" aria-label="post link to The power of the Rule Builder in Shopware 6" target="_blank" rel="noopener" href="https://www.intracto.com/nl-be/blog/de-kracht-van-de-shopware-6-rule-builder"></a>
+  
+</article>
+<article class="post-entry">
+  <figure class="entry-cover">
+    <img src="https://laenen.me/blog-shopware-shopping-experiences-header.jpg" alt="Shopping Experiences">
+  </figure>
+  <header class="entry-header">
+    <h2>
+      Improved Customer Experience with Shopping Experiences in Shopware
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>I wrote a guest post about Shopware 6 Shopping Experiences on the blog of Intracto. This blog post is in Dutch....</p>
+  </section>
+  <footer class="entry-footer">
+    <time>December 1, 2020</time>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Rune Laenen
+  </footer>
+    <a class="entry-link" aria-label="post link to Improved Customer Experience with Shopping Experiences in Shopware" target="_blank" rel="noopener" href="https://www.intracto.com/nl-be/blog/betere-klantervaringen-dankzij-shopping-experiences-van-shopware"></a>
+  
+</article>
+<article class="post-entry">
+  <figure class="entry-cover">
+    <img src="https://laenen.me/blog-social-shopping-header.jpg" alt="Social Shopping">
+  </figure>
+  <header class="entry-header">
+    <h2>
+      Selling on social media with Shopware 6
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>I wrote a guest post on the blog of Intracto about integrating Shopware 6 with Facebook and Instagram Shopping. This blog post is in Dutch....</p>
+  </section>
+  <footer class="entry-footer">
+    <time>November 13, 2020</time>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Rune Laenen
+  </footer>
+    <a class="entry-link" aria-label="post link to Selling on social media with Shopware 6" target="_blank" rel="noopener" href="https://www.intracto.com/nl-be/blog/makkelijker-verkopen-op-social-media-met-shopware-6"></a>
+  
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="/page/2/">Next Page »</a>
+  </nav>
+</footer>
 
     </main><footer class="footer">
-    <span>&copy; 2020 <a href="https://laenen.me/">Rune Laenen</a></span>
+    <span>&copy; 2021 <a href="https://laenen.me/">Rune Laenen</a></span>
     <span>&middot;</span>
     <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo️️</a>️</span>
     <span>&middot;</span>

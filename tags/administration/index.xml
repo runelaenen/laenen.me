@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>administration on Rune Laenen</title>
+    <link>https://laenen.me/tags/administration/</link>
+    <description>Recent content in administration on Rune Laenen</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 24 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://laenen.me/tags/administration/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Custom icons in Shopware 6 Administration</title>
+      <link>https://laenen.me/posts/custom-icons-in-sw6-admin/</link>
+      <pubDate>Thu, 24 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://laenen.me/posts/custom-icons-in-sw6-admin/</guid>
+      <description>Shopware is very extendable, but not everything is as easy to do or is as well documented as we would sometimes like. To extend this online &amp;lsquo;community-documentation&amp;rsquo;, I like to write down some tips, tricks and code snippets and share them with the world. Today, I tried to add a custom icon to the Shopware 6 Administration, and found out that it was not very easy to do. Until you know how, of course!</description>
+    </item>
+    
+  </channel>
+</rss>
