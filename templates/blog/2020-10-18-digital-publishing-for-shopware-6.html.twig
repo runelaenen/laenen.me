@@ -1,0 +1,55 @@
+{% extends 'blog-base.html.twig' %}
+
+{% block blog_body %}
+    <div class="container mx-auto">
+        <div class="w-full md:w-4/5 lg:w-3/5 mx-auto px-3 mt-5 mb-5">
+            <p class="mb-2">Hi there 👋</p>
+            <p class="mb-2">The first blog post here is to announce the launch of the first stable (read ‘stable
+                enough’) version of my
+                Advanced Banners (a.k.a Digital Publishing) plugin for Shopware 6.
+                It’s available for free on <a href="https://github.com/runelaenen/shopware6-advanced-banners"
+                                              target="_blank">Github</a> &amp; <a
+                        href="https://packagist.org/packages/runelaenen/shopware6-advanced-banners" target="_blank">packagist</a>.
+            </p>
+            <p class="mb-2">Install and try it out yourself:</p>
+            <pre class="bg-gray-800 text-gray-100 p-4 rounded-lg mb-3">require runelaenen/shopware6-advanced-banners</pre>
+            <p class="mb-2">Using Advanced banners, you can create layered, responsive banners without the need of
+                technical knowledge or
+                software like Photoshop. The plugin allows you to create content made out of layers of images, text,
+                buttons, … from within the Shopware 6 backend.</p>
+            <p class="mb-2">The plugin is heavily inspired by the Shopware 5 Digital Publishing plugin.</p>
+            <h2 id="features" class="mb-2 mt-4 text-bold">Features</h2>
+            <ul class="list-disc ml-5 mb-3">
+                <li>Banner editor</li>
+                <li>Layered banners</li>
+                <li>Image, text, wysiwyg layers</li>
+                <li>Easily extendible</li>
+                <li>‘Advanced Banner’ CMS element</li>
+                <li>‘Advanced Banner Slider’ CMS element</li>
+            </ul>
+            <blockquote class="bg-gray-100 p-5 m-5 text-center">
+                <p>Are you using and liking this plugin? Make sure to give a star on <a
+                            href="https://github.com/runelaenen/shopware6-advanced-banners" target="_blank">Github</a>
+                    and
+                    consider <a href="https://github.com/sponsors/runelaenen" target="_blank">sponsoring me</a> or <a
+                            href="https://www.buymeacoffee.com/runelaenen" target="_blank">buy me a coffee</a> so I can
+                    keep
+                    justifying putting a lot of time in these free open source plugins.</p>
+            </blockquote>
+            <h2 id="screenshots" class="mb-2">Screenshots</h2>
+            <p class="mb-2"><img src="/img/blog/screenshots/advanced-banners/1_new_banner.png" alt="New banner"></p>
+            <p class="mb-2"><img src="/img/blog/screenshots/advanced-banners/2_image_layer_config.png"
+                                 alt="Image layer configuration"></p>
+            <p class="mb-2"><img src="/img/blog/screenshots/advanced-banners/3_completed_banner_in_backend.png"
+                                 alt="Completed new banner in Shopware 6 Administration"></p>
+            <p class="mb-2"><img src="/img/blog/screenshots/advanced-banners/4_elements_in_shopping_exp.png"
+                                 alt="Elements in Shopping Experience CMS"></p>
+            <p class="mb-2"><img src="/img/blog/screenshots/advanced-banners/5_elements_in_storefront.png"
+                                 alt="Elements result on storefront">
+            </p>
+            <p class="mb-2"><img
+                        src="/img/blog/screenshots/advanced-banners/6_elements_in_storefront_with_full_width_section.png"
+                        alt="Elements result on storefront with full width section"></p>
+        </div>
+    </div>
+{% endblock %}

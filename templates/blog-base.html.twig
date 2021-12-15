@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block header_padding %}py-24{% endblock %}
+
+{% block body %}
+    <div class="container mx-auto py-5">
+        <h1 class="text-blue-400 text-5xl text-center mt-24 mb-1">{{ post.title }}</h1>
+        <div class="text-amber-300 text-center text-sm mb-24">
+            {{ post.date|date('d/m/Y') }}
+        </div>
+
+        {% block blog_body %}{% endblock %}
+    </div>
+{% endblock %}

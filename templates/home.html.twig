@@ -1,0 +1,118 @@
+{% extends 'base.html.twig' %}
+
+{% block header_content %}
+    <div class="font-display bg-blue-400 rounded p-5 mt-4 w-full md:w-4/5 lg:w-2/5 shadow-lg">
+        Hi there 👋<br/>
+        Welcome to my website & blog!<br/>
+        <br/>
+        I'm a certified Shopware 6 from Belgium working full-time at Intracto and part-time as a freelancer.<br/>
+        <br/>
+        If you are looking for an e-commerce consultant, plugin builder or general know-it-all: Look no further, and
+        contact me.
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div class="bg-blue-400 font-extralight py-32 px-4" id="plugins">
+        <div class="container mx-auto">
+            <h3 class="text-blue-900 text-4xl font-display font-normal mt-10">My plugins</h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-8 pb-8">
+                <a class="rounded-lg overflow-hidden shadow-lg hover:shadow-xl hover:scale-105 flex flex-row items-center bg-white transition"
+                   href="https://store.shopware.com/en/laene89843170115/digital-publishing-advanced-banners.html"
+                   target="_blank" rel="noopener" rel="noopener">
+                    <img src="./img/plugin/grid.png" alt="Grid plugin" class="w-1/3"/>
+                    <div class="flex flex-col flex-1 px-5">
+                        <strong class="text-gray-900 text-sm font-medium">CMS Bootstrap grid section</strong>
+                        <span class="text-gray-500 text-sm font-medium">Customizable grid section that allows you to create your own custom grid. 1 sidebar is clearly not enough, so we built this plugin so you can customize your own grid.</span>
+                    </div>
+                </a>
+                <a class="rounded-lg overflow-hidden shadow-lg hover:shadow-xl hover:scale-105 flex flex-row items-center bg-white transition"
+                   href="https://store.shopware.com/en/laene89843170115/digital-publishing-advanced-banners.html"
+                   target="_blank" rel="noopener">
+                    <img src="./img/plugin/publishing.png" alt="Publishing plugin" class="w-1/3"/>
+                    <div class="flex flex-col flex-1 px-5">
+                        <strong class="text-gray-900 text-sm font-medium">Digital Publishing</strong>
+                        <span class="text-gray-500 text-sm font-medium">Create & manage responsive Digital Publishing banners from the Admin of your Shopware 6 shop. Use multiple layers with text, images, links, ... to create the banner</span>
+                    </div>
+                </a>
+                <a class="rounded-lg overflow-hidden shadow-lg hover:shadow-xl hover:scale-105 flex flex-row items-center bg-white transition"
+                   href="https://store.shopware.com/en/laene89843170115/digital-publishing-advanced-banners.html"
+                   target="_blank" rel="noopener">
+                    <img src="./img/plugin/meilisearch.png" alt="Meilisearch plugin" class="w-1/3"/>
+                    <div class="flex flex-col flex-1 px-5">
+                        <strong class="text-gray-900 text-sm font-medium">MeiliSearch</strong>
+                        <span class="text-gray-500 text-sm font-medium">Not totally satisfied by the search experience your Shopware 6 webshop offers? This MeiliSearch integration app for Shopware 6 is the solution for you!</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="text-right mt-3">
+                <a href="https://store.shopware.com/en/laenen.html" target="_blank" rel="noopener"
+                   class="bg-blue-900 hover:bg-black transition text-blue-200 hover:text-white rounded-full py-4 px-5 text-sm font-bold uppercase">Find
+                    me on the Shopware Store</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-violet-400 font-extralight py-32 px-4" id="services">
+        <div class="container mx-auto">
+            <h3 class="text-violet-900 text-4xl font-display font-normal mt-10">My services</h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-8 text-violet-900">
+                <div class="bg-violet-300 rounded-lg p-4 shadow-lg">
+                    <b>Shopware 6 development</b><br/>
+                    Want your own Shopware plugin? Or do you have a problem that you can't fix? Want to launch a new
+                    webshop? Contact me, and let's see how I can help you and your business.
+                </div>
+                <div class="bg-violet-300 rounded-lg p-4 shadow-lg">
+                    <b>Graphical design</b><br/>
+                    In need of stationary? Flyers? Posters? Web-banners? Let's talk and see what I can do.
+                </div>
+                <div class="bg-violet-300 rounded-lg p-4 shadow-lg">
+                    <b>Shopware 6 audit</b><br/>
+                    Slow website? Bad SEO? I offer auditing services. I don't run some cheap tools on your website, but
+                    really dive into the source code to find out what could be wrong on your webshop.<br/>
+                    Bad code, missing dependencies, slow integrations: I will find it all.
+                </div>
+            </div>
+
+            <div class="text-center mt-10 text-3xl">
+                Interested? Contact me: <a href="mailto:rune@laenen.me" class="no-underline hover:underline hover:decoration-violet-800 hover:decoration-wavy">rune@laenen.me</a>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="bg-rose-400 font-extralight py-32 px-4" id="blog">
+        <div class="container mx-auto">
+            <h3 class="text-rose-900 text-4xl font-display font-normal mt-10">My blogposts</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-8 text-rose-900">
+                {% for slug, blogPost in blogPosts %}
+                    <a href="{{ path('app_blog_blogpost', {slug}) }}" {% if blogPost.type == 'external' %}target="_blank" rel="noopener"{% endif %} class="flex flex-col relative bg-rose-200 rounded-lg shadow-lg text-center transition hover:shadow-xl hover:scale-105">
+                        <img src="{{ blogPost.cover.image }}" alt="{{ blogPost.cover.alt }}" class="rounded-t-lg" loading="lazy" />
+                        <div class="p-4 flex flex-1 justify-center items-center">
+                            <b>{{ blogPost.title }}</b><br />
+                        </div>
+                        <div class="absolute top-3 right-3">
+                            <div class="inline-block p-2 rounded-full z-50 bg-rose-900 text-rose-300 text-xs">
+                                {{ blogPost.date|date("d/m/Y") }}
+                            </div>
+                            {% if blogPost.type == 'external' %}
+                                <div class="inline-block p-2 rounded-full z-50 mt-1 bg-rose-900 text-rose-300 text-xs">
+                                    Guest blog
+                                </div>
+                            {% endif %}
+                            {% if blogPost.language is defined %}
+                                <div class="inline-block p-2 rounded-full z-50 mt-1 bg-rose-900 text-rose-300 text-xs">
+                                    {{ blogPost.language }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

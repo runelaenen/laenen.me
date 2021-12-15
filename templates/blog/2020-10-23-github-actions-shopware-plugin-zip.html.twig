@@ -1,0 +1,75 @@
+{% extends 'blog-base.html.twig' %}
+
+{% block blog_body %}
+    <div class="container mx-auto">
+        <div class="w-full md:w-4/5 lg:w-3/5 mx-auto px-3 mt-5 mb-5">
+            <p class="mb-2">Shopware offers the possibility to upload <code>.zip</code> files in the backend to install plugins. As an open source developer, the main way to distribute my plugins was to offer a composer command. However, not all Shopware installations (or webmasters) have the possibility to easily add extra dependencies through composer.</p>
+            <p class="mb-2">To not have the hassle of creating the zip files manually, it’s possible to use Github Actions to automatically create it whenever you tag a new version.</p>
+            <p class="mb-2">The action uses a docker container from FriendsOfShopware to compile the needed files and zip it. The action then also creates a Github Release from the tag, and uploads the zip file as Release Asset.</p>
+            <p class="mb-2">Feel free to use the code below. Make sure to change the plugin name <code>SwagTestPlugin</code> to your plugin name everywhere.</p>
+            <h2 id="what-is-github-actions" class="text-xl mt-4">What is Github Actions?</h2>
+            <p class="mb-2">GitHub Actions is a CI/CD tool, built in into GitHub. And the best thing is: it’s free! It can be used without a limit for open source repositories! That makes it the ideal tool to run long(er) running actions - like setting up a Shopware installation &amp; building a plugin.</p>
+            <h2 id="composer-troubles" class="text-xl mt-4">Composer troubles</h2>
+            <p class="mb-2">At the moment, the plugins need to have 2 composer files: a normal <code>composer.json</code> file, and a <code>composer-ci.json</code> file which does not have the <code>shopware/*</code> dependencies.
+                If we try to build with the normal composer.json file, it will install a full shopware &amp; Symfony application in the vendor folder. This makes the .zip grow from ~400kb to ~38mb.</p>
+            <blockquote>
+                <p class="mb-2">If you know any better way to fix this issue without having a double file. Please help the community, and let us know 💙</p>
+            </blockquote>
+
+            <h4 id="file" class="mt-10">File: <code>.github/workflows/create-zip.yml</code> </h4>
+            <pre class="bg-gray-100 p-5 overflow-scroll	"><code class="hljs sql">name: <span class="hljs-keyword">Create</span> zip
+<span class="hljs-keyword">on</span>:
+    push:
+        tags:
+            - <span class="hljs-string">'*'</span>
+
+jobs:
+    CreateZip:
+        runs-<span class="hljs-keyword">on</span>: ubuntu-latest
+        <span class="hljs-keyword">container</span>: ghcr.io/friendsofshopware/platform-<span class="hljs-keyword">plugin</span>-dev:v6<span class="hljs-number">.3</span><span class="hljs-number">.1</span>
+        steps:
+            -   <span class="hljs-keyword">name</span>: <span class="hljs-keyword">Get</span> the <span class="hljs-keyword">version</span>
+                <span class="hljs-keyword">id</span>: get_version
+                run: echo ::<span class="hljs-keyword">set</span>-<span class="hljs-keyword">output</span> <span class="hljs-keyword">name</span>=<span class="hljs-keyword">VERSION</span>::${GITHUB_REF<span class="hljs-comment">#refs/tags/}</span>
+
+            -   <span class="hljs-keyword">name</span>: Checkout
+                uses: actions/checkout@v2<span class="hljs-number">.3</span><span class="hljs-number">.1</span>
+                <span class="hljs-keyword">with</span>:
+                    <span class="hljs-keyword">path</span>: SwagTestPlugin
+
+            -   <span class="hljs-keyword">name</span>: <span class="hljs-keyword">Build</span> &amp; <span class="hljs-keyword">create</span> zip
+                run: |
+                    cp -r <span class="hljs-string">"./SwagTestPlugin"</span> <span class="hljs-string">"/plugins/SwagTestPlugin"</span>
+                    COMPOSER=<span class="hljs-string">"composer-ci.json"</span> composer <span class="hljs-keyword">install</span> -d <span class="hljs-string">"/plugins/SwagTestPlugin"</span> <span class="hljs-comment">--no-ansi --no-dev --no-interaction --no-plugins --no-progress --no-scripts --no-suggest --optimize-autoloader --ignore-platform-reqs</span>
+                    <span class="hljs-keyword">start</span>-mysql
+                    pack-<span class="hljs-keyword">plugin</span> <span class="hljs-string">"SwagTestPlugin"</span>
+
+            -   <span class="hljs-keyword">name</span>: <span class="hljs-keyword">Create</span> <span class="hljs-keyword">Release</span>
+                <span class="hljs-keyword">if</span>: startsWith(github.ref, <span class="hljs-string">'refs/tags/'</span>)
+                <span class="hljs-keyword">id</span>: create_release
+                uses: actions/<span class="hljs-keyword">create</span>-<span class="hljs-keyword">release</span>@v1<span class="hljs-number">.0</span><span class="hljs-number">.0</span>
+                env:
+                    GITHUB_TOKEN: ${{ '{{' }} secrets.GITHUB_TOKEN }}
+                <span class="hljs-keyword">with</span>:
+                    tag_name: ${{ '{{' }} steps.get_version.outputs.VERSION }}
+                    release_name: ${{ '{{' }} steps.get_version.outputs.VERSION }}
+                    draft: <span class="hljs-literal">false</span>
+                    prerelease: <span class="hljs-literal">false</span>
+
+            -   <span class="hljs-keyword">name</span>: Upload <span class="hljs-keyword">Release</span> Asset
+                <span class="hljs-keyword">if</span>: startsWith(github.ref, <span class="hljs-string">'refs/tags/'</span>)
+                <span class="hljs-keyword">id</span>: upload_release_asset
+                uses: actions/upload-<span class="hljs-keyword">release</span>-asset@v1<span class="hljs-number">.0</span><span class="hljs-number">.2</span>
+                env:
+                    GITHUB_TOKEN: ${{ '{{' }} secrets.GITHUB_TOKEN }}
+                <span class="hljs-keyword">with</span>:
+                    upload_url: ${{ '{{' }} steps.create_release.outputs.upload_url }}
+                    asset_path: SwagTestPlugin.zip
+                    asset_name: SwagTestPlugin.zip
+                    asset_content_type: application/zip
+</code></pre><blockquote class="mt-5 bg-gray-100 p-5 text-center">
+                <p class="mb-2">Are you using and liking this post? Consider <a href="https://github.com/sponsors/runelaenen" target="_blank">sponsoring me</a> or <a href="https://www.buymeacoffee.com/runelaenen" target="_blank">buying me a coffee</a> so I can keep justifying putting a lot of time in these free open source plugins &amp; blog-posts.</p>
+            </blockquote>
+        </div>
+    </div>
+{% endblock %}

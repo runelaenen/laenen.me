@@ -1,19 +1,89 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+<html lang="en-BE">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Rune Laenen - Shopware plugin manufacturer & freelancer{% endblock %}</title>
+    <link rel="icon"
+          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    <meta name="viewport" content="width=device-width">
+    {% block meta %}
+        <meta name="description"
+              content="{% block meta_description %}Rune Laenen - Shopware plugin manufacturer & freelancer{% endblock %}">
+    {% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                fontFamily: {
+                    'display': ['Readex Pro', 'sans-serif'],
+                }
+            }
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;400;700&display=swap" rel="stylesheet">
+</head>
+<body class="font-display" class="scroll-smooth">
+{% block header %}
+    <div class="bg-blue-900 font-extralight {% block header_padding %}py-24 md:py-32 lg:py-56{% endblock%} px-4">
+        <div class="container mx-auto">
+            <div class="float-right">
+                <a href="/" class="text-blue-400 font-normal text-2xl no-underline hover:underline hover:decoration-amber-400 hover:decoration-wavy">Home</a><br />
+                <a href="/#plugins" class="text-blue-400 font-normal text-2xl no-underline hover:underline hover:decoration-amber-400 hover:decoration-wavy">Plugins</a><br />
+                <a href="/#services" class="text-blue-400 font-normal text-2xl no-underline hover:underline hover:decoration-amber-400 hover:decoration-wavy">Services</a><br />
+                <a href="/#blog" class="text-blue-400 font-normal text-2xl no-underline hover:underline hover:decoration-amber-400 hover:decoration-wavy">Blog</a><br />
+                <a href="/#footer" class="text-blue-400 font-normal text-2xl no-underline hover:underline hover:decoration-amber-400 hover:decoration-wavy">Contact</a><br />
+            </div>
+
+            <h1 class="text-blue-400 text-8xl font-display font-bold">Rune Laenen</h1>
+            <h2 class="text-amber-300 text-4xl font-display font-normal">Shopware plugin manufacturer & freelancer</h2>
+
+            {% block header_content %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}
+{% block body %}
+{% endblock %}
+{% block footer %}
+    <div id="footer" class="bg-gray-800 font-extralight py-32 min-h-screen flex items-center px-4">
+        <div class="container mx-auto">
+            <h1 class="text-blue-400 text-8xl font-display font-bold">Rune Laenen</h1>
+            <h2 class="text-amber-300 text-4xl font-display font-normal">Shopware plugin manufacturer & freelancer</h2>
+            <div>
+                <div class="float-left text-amber-300 mt-4 w-full md:w-1/3 lg:w-1/5">
+                    <strong>Contact</strong><br/>
+                    E-mail: <a href="mailto:rune@laenen.me"
+                               class="no-underline hover:underline hover:decoration-blue-400 hover:decoration-wavy">rune@laenen.me</a><br/>
+                    Phone: <a href="tel:0032474065350"
+                              class="no-underline hover:underline hover:decoration-blue-400 hover:decoration-wavy">+32
+                        474 06 53 50</a><br/>
+                    VAT: BE 0670.566.146<br/>
+                </div>
+                <div class="float-left text-amber-300 mt-4 w-full md:w-1/3 lg:w-1/5">
+                    <strong>Invoice Address</strong><br/>
+                    Laenen<br/>
+                    Veldstraat 34<br/>
+                    2275 Lille<br/>
+                    Belgium
+                </div>
+                <div class="float-left text-amber-300 mt-4 w-full md:w-1/3 lg:w-1/5">
+                    <strong>Socials</strong><br/>
+                    <a href="https://store.shopware.com/en/laenen.html" target="_blank" rel="noopener"
+                       class="no-underline hover:underline hover:decoration-blue-400 hover:decoration-wavy">Shopware
+                        Store</a><br/>
+                    <a href="https://github.com/runelaenen" target="_blank" rel="noopener"
+                       class="no-underline hover:underline hover:decoration-blue-400 hover:decoration-wavy">Github</a><br/>
+                    <a href="https://www.linkedin.com/in/runelaenen/" target="_blank" rel="noopener"
+                       class="no-underline hover:underline hover:decoration-blue-400 hover:decoration-wavy">LinkedIn</a><br/>
+                    <a href="https://www.twitter.com/runelaenen/" target="_blank" rel="noopener"
+                       class="no-underline hover:underline hover:decoration-blue-400 hover:decoration-wavy">Twitter</a><br/>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</body>
 </html>

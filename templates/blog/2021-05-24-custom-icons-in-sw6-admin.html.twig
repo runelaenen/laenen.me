@@ -1,0 +1,274 @@
+{% extends 'blog-base.html.twig' %}
+
+{% block blog_body %}
+    <div class="container mx-auto">
+        <div class="w-full md:w-4/5 lg:w-3/5 mx-auto px-3 mt-5 mb-5">
+            <p class="mb-2">Shopware is very extendable, but not everything is as easy to do or is as well documented as
+                we would sometimes like. To extend this online ‘community-documentation’, I like to write down some
+                tips, tricks and code snippets and share them with the world. Today, I tried to add a custom icon to the
+                Shopware 6 Administration, and found out that it was not very easy to do. Until you know how, of
+                course!</p>
+            <h2 class="text-2xl mt-4" id="in-short">In short…</h2>
+            <p class="mb-2">I assume you already have your plugin with some administration code. This could be a custom
+                module, or a change to an existing module.
+                We will be extending the webpack config, we will also need to actually load our svg’s to be usable in
+                the sw-icon component.</p>
+            <p class="mb-2">I assume you will put your svg icons in <code>src/Resources/app/administration/src/app/assets/icons/svg</code>,
+                which mimics the path the icons are in in the core.
+                The <code>sw-icon</code> component from the Shopware core dictates a naming convention for your file
+                names. They need to start with <code>icons-vendor-icon-name.svg</code>, for example <code>icons-rune-icon.svg</code>.
+                This will make it possible to load our icon with <code>&lt;sw-icon
+                    name="rune-icon"&gt;&lt;/sw-icon&gt;</code> in our code.</p>
+            <h1 class="text-4xl mt-5" id="tutorial">Tutorial</h1>
+            <h2 class="text-2xl mt-4" id="1-extending-webpackconfigjs">1. Extending webpack.config.js</h2>
+            <p class="mb-2">Luckily, Shopware provides a way to extend the webpack config from a plugin. This happens
+                with a config file, which the build scripts from Shopware will automatically pick up, after which it
+                applies its config.</p>
+            <p class="mb-2">To get started, create a file `src/Resources/app/administration/build/webpack.config.js.</p>
+            <p class="mb-2">First of all, lets start with this small boilerplate code. This imports the needed
+                dependencies, and exports a function which will extend the default config.</p>
+            <div class="highlight"><pre class="p-5 rounded-lg my-4 bg-gray-800 text-gray-100" style="-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code
+                            class="language-webpack.config.js" data-lang="webpack.config.js"><span
+                                style="color:#66d9ef">const</span> { <span style="color:#a6e22e">resolve</span>, <span
+                                style="color:#a6e22e">join</span> } <span style="color:#f92672">=</span> <span
+                                style="color:#a6e22e">require</span>(<span style="color:#e6db74">'path'</span>);
+
+<span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span
+                                style="color:#f92672">=</span> ({ <span style="color:#a6e22e">config</span> }) =&gt; {
+    <span style="color:#75715e">// Add some magic here
+</span><span style="color:#75715e"></span>};
+</code></pre>
+            </div>
+            <p class="mb-2">Our end goal, and the reason why we need to extend the webpack config, is to include our svg
+                icons inline.
+                To do this, there are 2 things we need to do. First we need to remove (or ‘exclude’) our svg’s path from
+                a certain rule (the url-loader rule which will make a base64 string, which we don’t want), and then add
+                our path to another rule (the svg-inline-loader rule which… well loads svgs inline :-P).</p>
+            <p class="mb-2">For the first path, we will need to find the url-loader rule.</p>
+            <div class="highlight"><pre class="p-5 rounded-lg my-4 bg-gray-800 text-gray-100" style="-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code
+                            class="language-webpack.config.js" data-lang="webpack.config.js"><span
+                                style="color:#75715e">// Find the url loader rule
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">urlLoaderRule</span> <span
+                                style="color:#f92672">=</span> <span style="color:#a6e22e">config</span>.<span
+                                style="color:#a6e22e">module</span>.<span style="color:#a6e22e">rules</span>.<span
+                                style="color:#a6e22e">find</span>((<span style="color:#a6e22e">rule</span>) =&gt; {
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">rule</span>.<span
+                                style="color:#a6e22e">loader</span> <span style="color:#f92672">===</span> <span
+                                style="color:#e6db74">'url-loader'</span>;
+});
+</code></pre>
+            </div>
+            <p class="mb-2">When we found the rule, we will add our directory to the <code>excludes</code> parameter of
+                the rule.</p>
+            <div class="highlight"><pre class="p-5 rounded-lg my-4 bg-gray-800 text-gray-100" style="-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code
+                            class="language-webpack.config.js" data-lang="webpack.config.js"><span
+                                style="color:#75715e">// Add our svg icons
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">urlLoaderRule</span>.<span style="color:#a6e22e">exclude</span>.<span
+                                style="color:#a6e22e">push</span>(
+    <span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">join</span>(<span
+                                style="color:#ae81ff">__</span><span style="color:#a6e22e">dirname</span>, <span
+                                style="color:#e6db74">'../src/app/assets/icons/svg'</span>))
+);
+</code></pre>
+            </div>
+            <p class="mb-2">Finally, we add a new <code>svg-inline-loader</code> rule to the configuration.</p>
+            <div class="highlight"><pre class="p-5 rounded-lg my-4 bg-gray-800 text-gray-100" style="-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code
+                            class="language-webpack.config.js" data-lang="webpack.config.js"><span
+                                style="color:#66d9ef">return</span> {
+    <span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">rules</span><span style="color:#f92672">:</span> [
+            {
+                <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/\.svg$/</span>,
+                <span style="color:#a6e22e">include</span><span style="color:#f92672">:</span> [
+                    <span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">join</span>(<span
+                                style="color:#ae81ff">__</span><span style="color:#a6e22e">dirname</span>, <span
+                                style="color:#e6db74">'../src/app/assets/icons/svg'</span>))
+                ],
+                <span style="color:#a6e22e">loader</span><span style="color:#f92672">:</span> <span
+                                style="color:#e6db74">'svg-inline-loader'</span>,
+                <span style="color:#a6e22e">options</span><span style="color:#f92672">:</span> {
+                    <span style="color:#a6e22e">removeSVGTagAttrs</span><span style="color:#f92672">:</span> <span
+                                style="color:#66d9ef">false</span>
+                }
+            },
+        ]
+    }
+};
+</code></pre>
+            </div>
+            <p class="mb-2">So quick recap: We change the existing config (by adding something to an existing rule), and
+                add some more config by adding the new rule.
+                Here’s the complete file:</p>
+            <div class="highlight"><pre class="p-5 rounded-lg my-4 bg-gray-800 text-gray-100" style="-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code
+                            class="language-webpack.config.js" data-lang="webpack.config.js"><span
+                                style="color:#66d9ef">const</span> { <span style="color:#a6e22e">resolve</span>, <span
+                                style="color:#a6e22e">join</span> } <span style="color:#f92672">=</span> <span
+                                style="color:#a6e22e">require</span>(<span style="color:#e6db74">'path'</span>);
+
+<span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span
+                                style="color:#f92672">=</span> ({ <span style="color:#a6e22e">config</span> }) =&gt; {
+    <span style="color:#75715e">// Find the url loader rule
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">urlLoaderRule</span> <span
+                                style="color:#f92672">=</span> <span style="color:#a6e22e">config</span>.<span
+                                style="color:#a6e22e">module</span>.<span style="color:#a6e22e">rules</span>.<span
+                                style="color:#a6e22e">find</span>((<span style="color:#a6e22e">rule</span>) =&gt; {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">rule</span>.<span style="color:#a6e22e">loader</span> <span
+                                style="color:#f92672">===</span> <span style="color:#e6db74">'url-loader'</span>;
+    });
+
+    <span style="color:#75715e">// Add our svg icons
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">urlLoaderRule</span>.<span
+                                style="color:#a6e22e">exclude</span>.<span style="color:#a6e22e">push</span>(
+        <span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">join</span>(<span style="color:#ae81ff">__</span><span
+                                style="color:#a6e22e">dirname</span>, <span style="color:#e6db74">'../src/app/assets/icons/svg'</span>))
+    );
+
+    <span style="color:#66d9ef">return</span> {
+        <span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> {
+            <span style="color:#a6e22e">rules</span><span style="color:#f92672">:</span> [
+                {
+                    <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span
+                                style="color:#e6db74">/\.svg$/</span>,
+                    <span style="color:#a6e22e">include</span><span style="color:#f92672">:</span> [
+                        <span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">join</span>(<span
+                                style="color:#ae81ff">__</span><span style="color:#a6e22e">dirname</span>, <span
+                                style="color:#e6db74">'../src/app/assets/icons/svg'</span>))
+                    ],
+                    <span style="color:#a6e22e">loader</span><span style="color:#f92672">:</span> <span
+                                style="color:#e6db74">'svg-inline-loader'</span>,
+                    <span style="color:#a6e22e">options</span><span style="color:#f92672">:</span> {
+                        <span style="color:#a6e22e">removeSVGTagAttrs</span><span style="color:#f92672">:</span> <span
+                                style="color:#66d9ef">false</span>
+                    }
+                },
+            ]
+        }
+    };
+};
+</code></pre>
+            </div>
+            <h2 class="text-2xl mt-4" id="2-load-the-svgs-as-a-vue-component">2. Load the svg’s as a Vue component</h2>
+            <p class="mb-2">The way the Shopware icons work, is by creating every icon as a Vue component. We won’t be
+                making a component manually. You could, but that’s a lot of boiler plate copy-paste code, so we reuse <a
+                        href="https://github.com/shopware/platform/blob/ff51a386e1a21d3477a6b967d92271df5fae6de5/src/Administration/Resources/app/administration/src/app/assets/icons/icons.js"
+                        target="_blank">the generator that Shopware core uses</a>.</p>
+            <p class="mb-2">Create the following file <code>src/Resources/app/administration/src/app/assets/icons/icons.js</code>
+                in your plugin:</p>
+            <div class="highlight"><pre class="p-5 rounded-lg my-4 bg-gray-800 text-gray-100" style="-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code
+                            class="language-plugins.js" data-lang="plugins.js"><span style="color:#66d9ef">export</span> <span
+                                style="color:#66d9ef">default</span> (() =&gt; {
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">context</span> <span
+                                style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>.<span
+                                style="color:#a6e22e">context</span>(<span style="color:#e6db74">'./svg'</span>, <span
+                                style="color:#66d9ef">true</span>, <span style="color:#e6db74">/svg$/</span>);
+
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">keys</span>().<span
+                                style="color:#a6e22e">reduce</span>((<span
+                                style="color:#a6e22e">accumulator</span>, <span style="color:#a6e22e">item</span>) =&gt; {
+        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">componentName</span> <span
+                                style="color:#f92672">=</span> <span style="color:#a6e22e">item</span>.<span
+                                style="color:#a6e22e">split</span>(<span style="color:#e6db74">'.'</span>)[<span
+                                style="color:#ae81ff">1</span>].<span style="color:#a6e22e">split</span>(<span
+                                style="color:#e6db74">'/'</span>)[<span style="color:#ae81ff">1</span>];
+
+        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">component</span> <span
+                                style="color:#f92672">=</span> {
+            <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">componentName</span>,
+            <span style="color:#a6e22e">functional</span><span style="color:#f92672">:</span> <span
+                                style="color:#66d9ef">true</span>,
+            <span style="color:#a6e22e">render</span>(<span style="color:#a6e22e">createElement</span>, <span
+                                style="color:#a6e22e">elementContext</span>) {
+                <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span
+                                style="color:#f92672">=</span> <span style="color:#a6e22e">elementContext</span>.<span
+                                style="color:#a6e22e">data</span>;
+
+                <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">createElement</span>(<span
+                                style="color:#e6db74">'span'</span>, {
+                    <span style="color:#66d9ef">class</span><span style="color:#f92672">:</span> [<span
+                                style="color:#a6e22e">data</span>.<span style="color:#a6e22e">staticClass</span>, <span
+                                style="color:#a6e22e">data</span>.<span style="color:#66d9ef">class</span>],
+                    <span style="color:#a6e22e">style</span><span style="color:#f92672">:</span> <span
+                                style="color:#a6e22e">data</span>.<span style="color:#a6e22e">style</span>,
+                    <span style="color:#a6e22e">attrs</span><span style="color:#f92672">:</span> <span
+                                style="color:#a6e22e">data</span>.<span style="color:#a6e22e">attrs</span>,
+                    <span style="color:#a6e22e">on</span><span style="color:#f92672">:</span> <span
+                                style="color:#a6e22e">data</span>.<span style="color:#a6e22e">on</span>,
+                    <span style="color:#a6e22e">domProps</span><span style="color:#f92672">:</span> {
+                        <span style="color:#a6e22e">innerHTML</span><span style="color:#f92672">:</span> <span
+                                style="color:#a6e22e">context</span>(<span style="color:#a6e22e">item</span>),
+                    },
+                });
+            },
+        };
+
+        <span style="color:#a6e22e">accumulator</span>.<span style="color:#a6e22e">push</span>(<span
+                                style="color:#a6e22e">component</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">accumulator</span>;
+    }, []);
+})();
+</code></pre>
+            </div>
+            <p class="mb-2">What this file does is the following:</p>
+            <ul class="list-disc pl-5">
+                <li>Create a Node.js <code>context</code> object for the svg folder. This is the folder that holds your
+                    svg files.
+                </li>
+                <li>Loop over the files, and for every file:
+                    <ul class="list-disc pl-5">
+                        <li>‘Render’ the filename to get the component name. In short, it takes the filename and cuts
+                            off the <code>.svg</code> file extensions. This makes the ‘raw’ filename the component name.
+                        </li>
+                        <li>Then it describes the component, and how it should be rendered: a span, with cetain classes,
+                            stles, attributes, and most importantly: the icon itself, which is loaded with the <code>context(item)</code>
+                            function.
+                        </li>
+                        <li>Finally, we push the component to our list and return it.</li>
+                    </ul>
+                </li>
+            </ul>
+            <p class="mb-2">It’s not just done yet. This file will not be automagically called, so we still have to
+                import &amp; run the file.
+                To do this, open your <code>main.js</code> file and add the following:</p>
+            <div class="highlight"><pre class="p-5 rounded-lg my-4 bg-gray-800 text-gray-100" style="-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code
+                            class="language-main.js" data-lang="main.js"><span style="color:#66d9ef">import</span> <span
+                                style="color:#a6e22e">iconComponents</span> <span
+                                style="color:#a6e22e">from</span> <span
+                                style="color:#e6db74">'./app/assets/icons/icons'</span>;
+
+<span style="color:#a6e22e">iconComponents</span>.<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">component</span>) =&gt; {
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Shopware</span>.<span style="color:#a6e22e">Component</span>.<span
+                                style="color:#a6e22e">register</span>(<span style="color:#a6e22e">component</span>.<span
+                                style="color:#a6e22e">name</span>, <span style="color:#a6e22e">component</span>);
+});
+</code></pre>
+            </div>
+            <p class="mb-2">This imports our <code>icons.js</code> file, runs it to generate the components, and
+                registers every component to the Shopware component registry.</p>
+            <h2 class="text-2xl mt-4" id="3-thats-it">3. That’s it!</h2>
+            <p class="mb-2">Now that I write it here, it’s actually quite simple. 3 files and you can get started with
+                your own custom icons.
+                You can now use the <a href="https://component-library.shopware.com/components/sw-icon" target="_blank"><code>sw-icon</code></a>
+                component to include your shiny custom icons.</p>
+            <h1 class="text-4xl" id="troubleshooting">Troubleshooting</h1>
+            <p class="mb-2">Are your icons still not loading? Maybe you have one of the issues I encountered:</p>
+            <h2 class="text-2xl mt-4" id="1-wrong-file-name">1. Wrong file name</h2>
+            <p class="mb-2">Make sure your icon components (= the svg file name) start with <code>icons-</code>. This is
+                a prefix that is used by the <code>sw-icon</code> component.
+                Filename <code>icons-rune-test.svg</code> will become <code>&lt;sw-icon name="rune-test"&gt;&lt;/sw-icon&gt;</code>
+            </p>
+            <h2 class="text-2xl mt-4" id="2-wrong-webpackconfigjs">2. Wrong webpack.config.js</h2>
+            <p class="mb-2">Are you seeing a base64 string? This means something is wrong with the webpack config, and
+                your custom config is probably not loading correctly.
+                Did you dump the plugin configuration? No? Run <code>bin/console bundle:dump</code>, restart your
+                watcher/build and it should work.
+                Are you sure you have restarted your watcher? No? Restart <code>bin/watch-administration.sh</code> and
+                it should work.</p>
+            <h1 id="enjoy">Enjoy!</h1>
+            <p class="mb-2">I hope nobody needs to spend as much time as I did to figure a simple thing like this out.
+                If you were helped by this guide, consider <a href="https://www.buymeacoffee.com/runelaenen"
+                                                              target="_blank">buying me a coffee</a>.
+                Did you already figure this out yourself, and are you looking for a job? Contact me!</p>
+
+        </div>
+    </div>
+{% endblock %}
