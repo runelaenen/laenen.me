@@ -41,7 +41,7 @@ host('srv1.laenen.me')
 desc('Build assets');
 task('build', function () {
     run('APP_ENV=prod composer install --no-dev');
-    run('yarn && yarn build');
+    //run('yarn && yarn build');
 })->local();
 
 task('upload', function () {
